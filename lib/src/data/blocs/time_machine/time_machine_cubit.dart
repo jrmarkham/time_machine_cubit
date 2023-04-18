@@ -37,11 +37,11 @@ class TimeMachineCubit extends Cubit<TimeMachineCubitState> {
     try {
       final DateTime upDate = DateTime.now();
       // post day update
-      if (upDate.day > state.currentDateTime.day) {
+      if (upDate.day != state.currentDateTime.day) {
         emit(state.copyWith(updateDateStatus: DateStatus.dayUpdate, updateCurrentDateTime: upDate));
       }
       // post hour update
-      if (upDate.hour > state.currentDateTime.hour) {
+      if (upDate.hour != state.currentDateTime.hour) {
         emit(state.copyWith(updateDateStatus: DateStatus.hourUpdate, updateCurrentDateTime: upDate));
       }
 
@@ -49,11 +49,11 @@ class TimeMachineCubit extends Cubit<TimeMachineCubitState> {
         emit(state.copyWith(updateDateStatus: DateStatus.halfHourUpdate, updateCurrentDateTime: upDate));
       }
 
-      if (upDate.minute > state.currentDateTime.minute) {
+      if (upDate.minute != state.currentDateTime.minute) {
         emit(state.copyWith(updateDateStatus: DateStatus.minuteUpdate, updateCurrentDateTime: upDate));
       }
 
-      if (upDate.second > state.currentDateTime.second) {
+      if (upDate.second != state.currentDateTime.second) {
         emit(state.copyWith(updateDateStatus: DateStatus.secondUpdate, updateCurrentDateTime: upDate));
       }
     } catch (e, stacktrace) {
